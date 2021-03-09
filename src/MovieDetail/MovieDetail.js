@@ -2,18 +2,18 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 
 const MovieDetail = () => {
-  const {movieId} = useParams()
+  const {id} = useParams()
   const [movieDetail, setMovieDetail] = useState({})
   const {title,overview,poster_path,release_date,homepage} = movieDetail
   const apiKey = "870967436c1517d581daf3b245495790"
 
   useEffect(()=>{
-    fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}&language=en-US`)
+    fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=en-US`)
     .then(res => res.json())
     .then(data => {
-      console.log(data)
+      console.log(data);
       setMovieDetail(data)})
-  },[])
+  },[id])
 
   return (
     <div className="container">
